@@ -17,6 +17,8 @@ package
 	{
 		private var _starling:Starling; 
 		
+		public static const EVT_CLOSEAPP:String = 'close app';
+		
 		public function Main():void 
 		{
 			if (stage) init();
@@ -29,8 +31,14 @@ package
 			
 			_starling = new Starling(Game, this.stage);
 			_starling.start();
+			_starling.addEventListener(EVT_CLOSEAPP, onCloseApp);
 		}
 		
+		//closing event handling: close the APP
+		public function onCloseApp(e:Object): void
+		{
+			NativeApplication.nativeApplication.exit();
+		}
 	}
 	
 }
