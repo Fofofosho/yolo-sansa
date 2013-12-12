@@ -7,6 +7,7 @@ package
 	import starling.events.Event;
 	import flash.utils.Timer;
 	import starling.events.KeyboardEvent;
+	import flash.system.System;
 	
 	/**
 	 * @usage
@@ -31,8 +32,6 @@ package
 		private var timer:Timer;
 		private var numTicks:Number;
 		
-		private const btn:KeyboardEvent = new KeyboardEvent("Exit", 0, 51);
-		
 		public function Game() 
 		{
 			super();
@@ -43,7 +42,9 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			addEventListener(KeyboardEvent.KEY_DOWN, quitGame);
+			//Adds functionality to quit the game if "3/MENU BTN" is pushed
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, onCloseBtn);
+			
 			state = _INIT;
 			
 			//FOR DEBUG>>
@@ -75,40 +76,61 @@ package
 				//Actual gameplay
 				case _RUNNING:
 				{
+					//do the collision detection and updating of 
+					//	characters/objects on the screen
 					
 				}
 				
 				//When game is paused
 				case _PAUSED:
 				{
-					
+					//might not need this case
 				}
 				
 				//When the player dies
 				case _LOSE:
 				{
-					
+					//Show game over screen, replay? continue? or boot back to main menu
 				}
 				
 				//When the player wins
 				case _WIN:
 				{
-					
+					//Game over but happy version
 				}
 				
 			}
+			
 			numTicks++;
+			
 		}
 		
-		//... i assume your button is in a variable btn
-		btn.addEventListener(Event.TRIGGERED, onCloseBtn);//this is starling.event.Event
-		//...
-		protected function onCloseBtn(_e:Event)
+		protected function onCloseBtn(event:KeyboardEvent):void
 		{
-			Starling.current.dispatchEventWith(Main.EVT_CLOSEAPP);
+			if(event.keyCode == 51)
+				System.exit(0);
+				
+			trace("Exit not caught");
 		}
 		
-		
+		/* *******MIGHT NOT NEED THIS
+		 * private function doPause(event:KeyboardEvent):void
+		{
+			if (event.keyCode == 80)
+			{
+				switch(state)
+				{
+					case STATE_MENU:
+						break;
+					case STATE_PAUSE:
+						state = STATE_RUN;
+						break;
+					case STATE_RUN:
+						state = STATE_PAUSE;
+						break;
+				}
+			}
+		}
+		*/
 	}
-
 }

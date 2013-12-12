@@ -31,14 +31,8 @@ package
 			
 			_starling = new Starling(Game, this.stage);
 			_starling.start();
-			_starling.addEventListener(EVT_CLOSEAPP, onCloseApp);
 		}
 		
-		//closing event handling: close the APP
-		public function onCloseApp(e:Object): void
-		{
-			NativeApplication.nativeApplication.exit();
-		}
 	}
 	
 }
