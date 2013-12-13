@@ -8,6 +8,8 @@ package
 	public class AssetManager 
 	{
 		// Embed assets here and create classes for them
+		[Embed(source = "../assets/jalapeno.png")]
+		private static const jalapeno:Class;
 		
 		
 		private static var textures:Dictionary = new Dictionary();

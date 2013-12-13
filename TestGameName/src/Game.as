@@ -32,10 +32,13 @@ package
 		private var timer:Timer;
 		private var numTicks:Number;
 		
+		private var world:World;
+		
 		public function Game() 
 		{
 			super();
 			addEventListener(Event.ADDED_TO_STAGE, init);
+			world = new World();
 		}
 		
 		private function init(event:Event):void
@@ -64,6 +67,7 @@ package
 				//Menu State
 				case _INIT:
 				{
+					
 					/*
 					Make the main menu and add an event listener for which is selected
 					Allow the use of the UP,DOWN arrows to change which is selected.
