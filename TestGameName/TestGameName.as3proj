@@ -6,8 +6,8 @@
     <movie input="" />
     <movie path="bin\TestGameName.swf" />
     <movie fps="30" />
-    <movie width="800" />
-    <movie height="600" />
+    <movie width="500" />
+    <movie height="800" />
     <movie version="11" />
     <movie minorVersion="8" />
     <movie platform="Flash Player" />
