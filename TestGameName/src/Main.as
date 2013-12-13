@@ -17,8 +17,6 @@ package
 	{
 		private var _starling:Starling; 
 		
-		public static const EVT_CLOSEAPP:String = 'close app';
-		
 		public function Main():void 
 		{
 			if (stage) init();

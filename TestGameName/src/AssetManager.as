@@ -8,7 +8,7 @@ package
 	public class AssetManager 
 	{
 		// Embed assets here and create classes for them
-		[Embed(source = "../assets/jalapeno.png")]
+		[Embed(source = "../assets/jalapeno.jpg")]
 		private static const jalapeno:Class;
 		
 		

@@ -3,11 +3,14 @@ package
 	import adobe.utils.CustomActions;
 	import flash.events.TimerEvent;
 	import flash.ui.KeyLocation;
+	import Screens.MainMenu;
+	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import flash.utils.Timer;
 	import starling.events.KeyboardEvent;
 	import flash.system.System;
+	import starling.textures.Texture;
 	
 	/**
 	 * @usage
@@ -34,11 +37,15 @@ package
 		
 		private var world:World;
 		
+		private var mainMenu:MainMenu;
+		
 		public function Game() 
 		{
 			super();
 			addEventListener(Event.ADDED_TO_STAGE, init);
+			
 			world = new World();
+			
 		}
 		
 		private function init(event:Event):void
@@ -58,6 +65,56 @@ package
 			timer = new Timer(1000 / 30, 0);
 			timer.addEventListener(TimerEvent.TIMER, update);
 			timer.start();
+			draw();
+		}
+		
+		private function draw():void
+		{
+			switch (state)
+			{
+				//Drawing all menu items
+				case _INIT:
+				{
+					mainMenu = new MainMenu();
+					stage.addChild(mainMenu);
+					
+					/*
+					Make the main menu and add an event listener for which is selected
+					Allow the use of the UP,DOWN arrows to change which is selected.
+					We will need buttons that have a 
+					>>	Normal, highlighted (when selected), and pressed form
+					*/
+					
+				}
+				
+				//Drawing gameplay aspects
+				case _RUNNING:
+				{
+					//do the collision detection and updating of 
+					//	characters/objects on the screen
+					
+					//world.draw();
+				}
+				
+				//Drawing paused screen stuff
+				case _PAUSED:
+				{
+					//might not need this case
+				}
+				
+				//Drawing lose screen
+				case _LOSE:
+				{
+					//Show game over screen, replay? continue? or boot back to main menu
+				}
+				
+				//Drawing win screen
+				case _WIN:
+				{
+					//Game over but happy version
+				}
+				
+			}
 		}
 		
 		private function update(event:TimerEvent):void
@@ -67,7 +124,6 @@ package
 				//Menu State
 				case _INIT:
 				{
-					
 					/*
 					Make the main menu and add an event listener for which is selected
 					Allow the use of the UP,DOWN arrows to change which is selected.
@@ -83,6 +139,7 @@ package
 					//do the collision detection and updating of 
 					//	characters/objects on the screen
 					
+					//Manage the array of sprite's location
 				}
 				
 				//When game is paused
