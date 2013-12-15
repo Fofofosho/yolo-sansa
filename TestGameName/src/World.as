@@ -12,8 +12,11 @@ package
 	public class World
 	{
 		public var platformArray:Array;
-		private var platform:Platform;
+		
 		private var stage:Stage;
+		
+		private var platform:Platform;
+		private var player:Player;
 		
 		//This will handle all of the continuous world and "stepping blocks"
 		public function World(stage:Stage) 
@@ -21,6 +24,8 @@ package
 			trace("this happened");
 			this.stage = stage;
 			setupSpritesArray();
+			
+			player = new Player();
 		}
 		
 		private function setupSpritesArray():void
@@ -45,6 +50,9 @@ package
 			{
 				stage.addChild(image);
 			}
+			
+			//draw player
+			stage.addChild(player.getPlayerImage());
 		}
 		
 	}
