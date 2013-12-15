@@ -141,6 +141,7 @@ package
 					
 					//Manage the array of sprite's location
 					//trace("RUNNING");
+					world.update();
 					
 					if (world.checkPlayerDeath()) {
 						state = _END;
@@ -169,8 +170,6 @@ package
 		{
 			if(event.keyCode == Keyboard.NUMBER_3)
 				System.exit(0);
-				
-			trace("Exit not caught");
 		}
 		
 		protected function dispatch(event:KeyboardEvent):void

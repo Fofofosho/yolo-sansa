@@ -56,18 +56,27 @@ package
 			switch(event.keyCode)
 			{
 				case Keyboard.LEFT:
-					player.setPosition(player.getPosition().add(new Point(-5, 0)));
+					player.setAcceleration(new Point(-5/30, 0));
 					break;
 					
 				case Keyboard.RIGHT:
-					player.setPosition(player.getPosition().add(new Point(5, 0)));
+					player.setAcceleration(new Point(5/30, 0));
 					break;
 			}
 		}
 		
 		public function onKeyRelease(event:KeyboardEvent):void
 		{
-			
+			switch(event.keyCode)
+			{
+				case Keyboard.LEFT:
+					player.setAcceleration(new Point());
+					break;
+					
+				case Keyboard.RIGHT:
+					player.setAcceleration(new Point());
+					break;
+			}
 		}
 		
 		public function update():void

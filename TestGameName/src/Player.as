@@ -33,8 +33,7 @@ package
 		}
 		
 		public function update() : void
-		{			
-			
+		{	
 			this.x = position.x;
 			this.y = position.y;
 			
@@ -83,6 +82,16 @@ package
 		public function setVelocity(newV:Point):void
 		{
 			velocity = newV;
+		}
+		
+		public function getAcceleration():Point
+		{
+			return acceleration;
+		}
+		
+		public function setAcceleration(newA:Point):void
+		{
+			acceleration = newA;
 		}
 	}
 
