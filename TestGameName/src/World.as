@@ -86,6 +86,31 @@ package
 			stage.addChild(player);
 		}
 		
+		
+		public function checkPlayerDeath():Boolean
+		{
+			if (player.getPosition().y > stage.height) 
+			{
+				return true;
+			}
+			
+			else return false;
+		}
+		
+		
+		public function checkSideBoundaries():void 
+		{
+			if ((player.getPosition().x + (player.width / 2)) < 0)
+			{
+				player.setPosition(new Point(stage.width - (player.width / 2), player.getPosition().y));
+			}
+				
+			if ((player.getPosition().x + (player.width / 2)) > stage.width) 
+			{
+				player.setPosition(new Point(0 - (player.width / 2), player.getPosition().y));
+			}
+		}
+		
 	}
 
 }

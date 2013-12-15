@@ -27,8 +27,7 @@ package
 		private const _INIT:Number 		= 1;
 		private const _RUNNING:Number 	= 2;
 		private const _PAUSED:Number	= 3;
-		private const _LOSE:Number		= 4;
-		private const _WIN:Number		= 5;
+		private const _END:Number		= 4;
 		
 		private var state:Number;
 		
@@ -108,20 +107,12 @@ package
 					break;
 				}
 				
-				//Drawing lose screen
-				case _LOSE:
+				//Drawing game over screen
+				case _END:
 				{
 					//Show game over screen, replay? continue? or boot back to main menu
 					break;
 				}
-				
-				//Drawing win screen
-				case _WIN:
-				{
-					//Game over but happy version
-					break;
-				}
-				
 			}
 		}
 		
@@ -150,7 +141,13 @@ package
 					
 					//Manage the array of sprite's location
 					//trace("RUNNING");
-					world.update();
+					
+					if (world.checkPlayerDeath()) {
+						state = _END;
+					}
+					
+					world.checkSideBoundaries();
+					
 					break;
 				}
 				
@@ -161,23 +158,7 @@ package
 					
 					break;
 				}
-				
-				//When the player dies
-				case _LOSE:
-				{
-					//Show game over screen, replay? continue? or boot back to main menu
-					
-					break;
-				}
-				
-				//When the player wins
-				case _WIN:
-				{
-					//Game over but happy version
-					
-					break;
-				}
-				
+								
 			}
 			
 			numTicks++;
