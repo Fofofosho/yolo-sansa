@@ -2,6 +2,7 @@ package
 {
 	import adobe.utils.CustomActions;
 	import flash.events.TimerEvent;
+	import flash.ui.Keyboard;
 	import flash.ui.KeyLocation;
 	import Screens.MainMenu;
 	import starling.display.Image;
@@ -180,7 +181,7 @@ package
 		
 		protected function onCloseBtn(event:KeyboardEvent):void
 		{
-			if(event.keyCode == 51)
+			if(event.keyCode == Keyboard.NUMBER_3)
 				System.exit(0);
 				
 			trace("Exit not caught");
@@ -210,7 +211,7 @@ package
 		/* *******MIGHT NOT NEED THIS
 		 * private function doPause(event:KeyboardEvent):void
 		{
-			if (event.keyCode == 80)
+			if (event.keyCode == Keyboard.P)
 			{
 				switch(state)
 				{
