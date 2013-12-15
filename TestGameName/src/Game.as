@@ -109,6 +109,10 @@ package
 					//	characters/objects on the screen
 					
 					world.draw();
+					
+					//FOR TESTING
+					stage.addChild(new Image(AssetManager.getTexture("end")));
+					
 					break;
 				}
 				
@@ -123,6 +127,7 @@ package
 				case _END:
 				{
 					//Show game over screen, replay? continue? or boot back to main menu
+					
 					break;
 				}
 			}

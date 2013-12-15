@@ -26,6 +26,9 @@ package
 		[Embed(source = "../assets/menu_button.png")]
 		private static const selected_button:Class;
 		
+		[Embed(source = "../assets/end.png")]
+		private static const end:Class;
+		
 		
 		private static var textures:Dictionary = new Dictionary();
 		private static var sprites:Dictionary  = new Dictionary();
