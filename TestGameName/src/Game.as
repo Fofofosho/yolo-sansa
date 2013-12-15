@@ -4,6 +4,7 @@ package
 	import flash.events.TimerEvent;
 	import flash.ui.Keyboard;
 	import flash.ui.KeyLocation;
+	import Screens.End;
 	import Screens.MainMenu;
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -35,12 +36,14 @@ package
 		private var timer:Timer;
 		private var numTicks:Number;
 		
+		//State specific visualizations
 		private var mainMenu:MainMenu;
+		private var end:End;
 		
 		private var world:World;
 		
 		//keep track of score
-		private var score:uint = 0;
+		public var score:uint = 0;
 		private var scoreboard:TextField;
 		
 		public function Game() 
@@ -110,9 +113,6 @@ package
 					
 					world.draw();
 					
-					//FOR TESTING
-					stage.addChild(new Image(AssetManager.getTexture("end")));
-					
 					break;
 				}
 				
@@ -127,6 +127,10 @@ package
 				case _END:
 				{
 					//Show game over screen, replay? continue? or boot back to main menu
+					stage.removeChild(scoreboard);
+					
+					end = new End(this);
+					stage.addChild(end);
 					
 					break;
 				}
@@ -164,8 +168,6 @@ package
 						state = _END;
 					}
 					
-					
-					
 					world.checkSideBoundaries();
 					
 					break;
@@ -178,7 +180,12 @@ package
 					
 					break;
 				}
-								
+				
+				//When the user dies
+				case _END:
+				{
+					//might not need to update anything here. BUT need to listen to enter for replay.
+				}
 			}
 			
 			numTicks++;
