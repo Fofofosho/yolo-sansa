@@ -56,7 +56,6 @@ package
 			//Adds functionality to quit the game if "3/MENU BTN" is pushed
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onCloseBtn);
 			
-			
 			state = _INIT;
 			
 			//FOR DEBUG>>
@@ -64,12 +63,8 @@ package
 			
 			numTicks = 0;
 			
-			//start scoreboard at 0
+			//For scoreboard
 			score = 0;
-			scoreboard = new TextField(50, 35, score.toString(),"Verdana", 30, 0xDB212A);
-			scoreboard.x = stage.width;
-			
-			addChild(scoreboard);
 			
 			timer = new Timer(1000 / 30, 0);
 			timer.addEventListener(TimerEvent.TIMER, update);
@@ -102,6 +97,11 @@ package
 				{
 					stage.removeEventListener(KeyboardEvent.KEY_DOWN, dispatch);
 					world = new World(stage);
+					
+					//Add scoreboard. Starts at 0
+					scoreboard = new TextField(50, 35, score.toString(),"Verdana", 30, 0xDB212A);
+					scoreboard.x = stage.width;
+					addChild(scoreboard);
 					
 					trace("RUNNING");
 					

@@ -1,10 +1,12 @@
 package Screens 
 {
+	import starling.animation.Tween;
 	import starling.display.Stage;
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.events.KeyboardEvent;
+	import starling.core.Starling;
 	
 	/**
 	 * @author Forrest Townsend
@@ -15,12 +17,17 @@ package Screens
 		private var stage:Stage;
 		
 		private var background:Image;
+		private var bgTween:Tween;
+		
+		private var credits:Image;
+		private var credTween:Tween;
 		
 		private var start_btn:Image;
 		private var start_btn_select:Image
 		
 		//Only need one boolean, true is top, false is bottom
 		private var topSelect:Boolean;
+		private var creditBool:Boolean;
 		
 		private var credits_btn:Image;
 		private var credits_btn_select:Image;
@@ -33,12 +40,12 @@ package Screens
 			this.stage = main;
 			this.game = game;
 			background = new Image(AssetManager.getTexture("menu"));
+			credits = new Image(AssetManager.getTexture("credits"));
 			stage.addChild(background);
 			
 			//Initialize boolean
 			topSelect = true;
-			
-			stage.addEventListener(KeyboardEvent.KEY_DOWN, checkButton);
+			creditBool = false;
 			
 			//Display buttons
 			drawButtons();
@@ -51,7 +58,6 @@ package Screens
 			stage.removeChild(credits_btn);
 			stage.removeChild(credits_btn_select);
 			stage.removeChild(background);
-			
 		}
 		
 		private function drawButtons():void
@@ -104,6 +110,19 @@ package Screens
 		
 		public function checkButton(event:KeyboardEvent):void
 		{
+			trace("button push");
+			if (creditBool)
+			{
+				credTween.fadeTo(0);
+				Starling.juggler.add(credTween);
+				
+				background.alpha = 1;
+				
+				stage.removeChild(credits);
+				creditBool = false;
+				return;
+			}
+			
 			switch(event.keyCode)
 			{
 				//key 'W'
@@ -181,6 +200,18 @@ package Screens
 					else
 					{
 						//GOTO CREDITS SCREEN, make all menu items visible = false
+						credits.alpha = 0;
+						stage.addChild(credits);
+						
+						bgTween = new Tween(background, .5);
+						bgTween.fadeTo(0);
+						Starling.juggler.add(bgTween);
+						
+						credTween = new Tween(credits, .5);
+						credTween.fadeTo(1);
+						Starling.juggler.add(credTween);
+						
+						creditBool = true;
 					}
 					break;
 					
