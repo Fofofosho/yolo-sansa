@@ -23,7 +23,6 @@ package
 	 */
 	public class Game extends Sprite
 	{
-		
 		private const _INIT:Number 		= 1;
 		private const _RUNNING:Number 	= 2;
 		private const _PAUSED:Number	= 3;
@@ -35,17 +34,12 @@ package
 		private var timer:Timer;
 		private var numTicks:Number;
 		
-		private var world:World;
-		
 		private var mainMenu:MainMenu;
 		
 		public function Game() 
 		{
 			super();
 			addEventListener(Event.ADDED_TO_STAGE, init);
-			
-			world = new World();
-			
 		}
 		
 		private function init(event:Event):void
@@ -54,6 +48,7 @@ package
 			
 			//Adds functionality to quit the game if "3/MENU BTN" is pushed
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onCloseBtn);
+			
 			
 			state = _INIT;
 			
@@ -75,8 +70,8 @@ package
 				//Drawing all menu items
 				case _INIT:
 				{
-					mainMenu = new MainMenu();
-					stage.addChild(mainMenu);
+					mainMenu = new MainMenu(stage, this);
+					stage.addEventListener(KeyboardEvent.KEY_DOWN, dispatch);
 					
 					/*
 					Make the main menu and add an event listener for which is selected
@@ -85,33 +80,41 @@ package
 					>>	Normal, highlighted (when selected), and pressed form
 					*/
 					
+					break;
 				}
 				
 				//Drawing gameplay aspects
 				case _RUNNING:
 				{
+					stage.removeEventListener(KeyboardEvent.KEY_DOWN, dispatch);
+					trace("RUNNING");
+					
 					//do the collision detection and updating of 
 					//	characters/objects on the screen
 					
 					//world.draw();
+					break;
 				}
 				
 				//Drawing paused screen stuff
 				case _PAUSED:
 				{
 					//might not need this case
+					break;
 				}
 				
 				//Drawing lose screen
 				case _LOSE:
 				{
 					//Show game over screen, replay? continue? or boot back to main menu
+					break;
 				}
 				
 				//Drawing win screen
 				case _WIN:
 				{
 					//Game over but happy version
+					break;
 				}
 				
 			}
@@ -131,6 +134,7 @@ package
 					>>	Normal, highlighted (when selected), and pressed form
 					*/
 					
+					break;
 				}
 				
 				//Actual gameplay
@@ -140,24 +144,32 @@ package
 					//	characters/objects on the screen
 					
 					//Manage the array of sprite's location
+					trace("RUNNING");
+					break;
 				}
 				
 				//When game is paused
 				case _PAUSED:
 				{
 					//might not need this case
+					
+					break;
 				}
 				
 				//When the player dies
 				case _LOSE:
 				{
 					//Show game over screen, replay? continue? or boot back to main menu
+					
+					break;
 				}
 				
 				//When the player wins
 				case _WIN:
 				{
 					//Game over but happy version
+					
+					break;
 				}
 				
 			}
@@ -172,6 +184,27 @@ package
 				System.exit(0);
 				
 			trace("Exit not caught");
+		}
+		
+		protected function dispatch(event:KeyboardEvent):void
+		{
+			switch (state)
+			{
+				case _INIT:
+					mainMenu.checkButton(event);
+			}
+		}
+		
+		public function runGame():void
+		{
+			if(state == _INIT)
+			{
+				state = _RUNNING;
+				mainMenu = null;
+				
+				//Draws the new items to the screen
+				draw();
+			}
 		}
 		
 		/* *******MIGHT NOT NEED THIS

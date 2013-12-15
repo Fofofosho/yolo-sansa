@@ -11,6 +11,17 @@ package
 		[Embed(source = "../assets/jalapeno.jpg")]
 		private static const jalapeno:Class;
 		
+		[Embed(source = "../assets/menu.png")]
+		private static const menu:Class;
+		
+		[Embed(source = "../assets/menu_button0.png")]
+		private static const button:Class;
+		
+		[Embed(source = "../assets/menu_button.png")]
+		private static const selected_button:Class;
+		
+		
+		
 		
 		private static var textures:Dictionary = new Dictionary();
 		private static var sprites:Dictionary  = new Dictionary();
