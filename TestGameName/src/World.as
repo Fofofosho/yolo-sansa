@@ -109,14 +109,14 @@ package
 		
 		public function checkSideBoundaries():void 
 		{
-			if ((player.getPosition().x + (player.width / 2)) < 0)
+			if ((player.getPosition().x + (player.width / 1.8)) < 0)
 			{
-				player.setPosition(new Point(stage.stageWidth - (player.width / 2), player.getPosition().y));
+				player.setPosition(new Point(stage.stageWidth - (player.width / 6), player.getPosition().y));
 			}
 				
-			else if ((player.getPosition().x + (player.width / 2)) > stage.stageWidth) 
+			else if ((player.getPosition().x + (player.width / 1.8)) > stage.stageWidth) 
 			{
-				player.setPosition(new Point(0 - (player.width / 2), player.getPosition().y));
+				player.setPosition(new Point(0 - (player.width / 6), player.getPosition().y));
 			}
 		}
 		

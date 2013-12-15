@@ -57,7 +57,7 @@ package
 			{
 				velocity.x *= .2;
 				
-				if(velocity.x > -.8 && velocity.x < .8)
+				if(velocity.x > -1 && velocity.x < 1)
 					velocity.x = 0;
 			}
 		}
