@@ -147,6 +147,8 @@ package
 						state = _END;
 					}
 					
+					
+					
 					world.checkSideBoundaries();
 					
 					break;
