@@ -141,6 +141,13 @@ package
 					
 					//Manage the array of sprite's location
 					//trace("RUNNING");
+					
+					if (world.checkPlayerDeath()) {
+						state = _END;
+					}
+					
+					world.checkSideBoundaries();
+					
 					break;
 				}
 				
