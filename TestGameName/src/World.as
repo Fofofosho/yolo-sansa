@@ -1,9 +1,12 @@
 package  
 {
 	import flash.geom.Point;
+	import flash.ui.Keyboard;
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.display.Stage;
+	import starling.events.Event;
+	import starling.events.KeyboardEvent;
 	import starling.textures.Texture;
 	
 	/**
@@ -23,9 +26,13 @@ package
 		{
 			trace("this happened");
 			this.stage = stage;
-			setupSpritesArray();
 			
 			player = new Player();
+			player.setPosition(new Point(250, 600));
+			
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+			setupSpritesArray();
 		}
 		
 		private function setupSpritesArray():void
@@ -44,6 +51,30 @@ package
 			}
 		}
 		
+		public function onKeyPress(event:KeyboardEvent):void
+		{
+			switch(event.keyCode)
+			{
+				case Keyboard.LEFT:
+					player.setPosition(player.getPosition().add(new Point(-5, 0)));
+					break;
+					
+				case Keyboard.RIGHT:
+					player.setPosition(player.getPosition().add(new Point(5, 0)));
+					break;
+			}
+		}
+		
+		public function onKeyRelease(event:KeyboardEvent):void
+		{
+			
+		}
+		
+		public function update():void
+		{
+			player.update();
+		}
+		
 		public function draw():void
 		{
 			for each (var image:Image in platformArray)
@@ -52,7 +83,7 @@ package
 			}
 			
 			//draw player
-			stage.addChild(player.getPlayerImage());
+			stage.addChild(player);
 		}
 		
 	}

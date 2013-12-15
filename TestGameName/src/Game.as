@@ -150,6 +150,7 @@ package
 					
 					//Manage the array of sprite's location
 					//trace("RUNNING");
+					world.update();
 					break;
 				}
 				
