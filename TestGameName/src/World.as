@@ -102,10 +102,10 @@ package
 		{
 			if ((player.getPosition().x + (player.width / 2)) < 0)
 			{
-				player.setPosition(new Point(stage.width - (player.width / 2), player.getPosition().y));
+				player.setPosition(new Point(stage.stageWidth - (player.width / 2), player.getPosition().y));
 			}
 				
-			if ((player.getPosition().x + (player.width / 2)) > stage.width) 
+			else if ((player.getPosition().x + (player.width / 2)) > stage.stageWidth) 
 			{
 				player.setPosition(new Point(0 - (player.width / 2), player.getPosition().y));
 			}
