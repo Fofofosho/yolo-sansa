@@ -8,7 +8,7 @@ package
 	 * @usage
 	 * 	Starts starling, and calls the Game class. Starter file.
 	 * 
-	 * @author 
+	 * @author
 	 * 	Nakai McCarty
 	 * 	Zack Smith
 	 * 	Forrest Townsend
