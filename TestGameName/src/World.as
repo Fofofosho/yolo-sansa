@@ -56,11 +56,11 @@ package
 			switch(event.keyCode)
 			{
 				case Keyboard.LEFT:
-					player.setAcceleration(new Point(-5/30, 0));
+					player.setAcceleration(new Point(-1/3, 0));
 					break;
 					
 				case Keyboard.RIGHT:
-					player.setAcceleration(new Point(5/30, 0));
+					player.setAcceleration(new Point(1/3, 0));
 					break;
 			}
 		}

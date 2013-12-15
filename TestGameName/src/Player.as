@@ -40,12 +40,12 @@ package
 			velocity = velocity.add(acceleration);
 			position = position.add(velocity);
 			
-			if(Math.abs(velocity.x) > 5)
+			if(Math.abs(velocity.x) > 8)
 			{
 				if(velocity.x < 0)
-					velocity.x = -5;
+					velocity.x = -8;
 				else
-					velocity.x = 5;
+					velocity.x = 8;
 			}
 			
 			applyPhysics();
@@ -55,7 +55,7 @@ package
 		{
 			if(acceleration.x == 0)
 			{
-				velocity.x *= .9;
+				velocity.x *= .8;
 				
 				if(velocity.x > -.5 && velocity.x < .5)
 					velocity.x = 0;
