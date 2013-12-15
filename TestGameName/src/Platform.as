@@ -17,15 +17,9 @@ package
 		
 		public function Platform() 
 		{
-			super();
-			addEventListener(Event.ADDED_TO_STAGE, init);
-		}
-		
-		private function init(event:Event):void
-		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			
 			jalapeno = new Image(AssetManager.getTexture("jalapeno"));
+			jalapeno.x = Math.floor(Math.random() * 380) + 2;
+			jalapeno.y = Math.floor(Math.random() * 700) + 2;
 		}
 		
 		public function getImage():Image

@@ -12,7 +12,6 @@ package Screens
 	
 	public class MainMenu 
 	{
-		
 		private var stage:Stage;
 		
 		private var background:Image;

@@ -36,6 +36,8 @@ package
 		
 		private var mainMenu:MainMenu;
 		
+		private var world:World;
+		
 		public function Game() 
 		{
 			super();
@@ -87,12 +89,14 @@ package
 				case _RUNNING:
 				{
 					stage.removeEventListener(KeyboardEvent.KEY_DOWN, dispatch);
+					world = new World(stage);
+					
 					trace("RUNNING");
 					
 					//do the collision detection and updating of 
 					//	characters/objects on the screen
 					
-					//world.draw();
+					world.draw();
 					break;
 				}
 				
@@ -144,7 +148,7 @@ package
 					//	characters/objects on the screen
 					
 					//Manage the array of sprite's location
-					trace("RUNNING");
+					//trace("RUNNING");
 					break;
 				}
 				
