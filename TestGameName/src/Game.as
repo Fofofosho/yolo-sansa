@@ -11,6 +11,7 @@ package
 	import flash.utils.Timer;
 	import starling.events.KeyboardEvent;
 	import flash.system.System;
+	import starling.text.TextField;
 	import starling.textures.Texture;
 	
 	/**
@@ -38,6 +39,10 @@ package
 		
 		private var world:World;
 		
+		//keep track of score
+		private var score:uint = 0;
+		private var scoreboard:TextField;
+		
 		public function Game() 
 		{
 			super();
@@ -58,6 +63,13 @@ package
 			trace("menu");
 			
 			numTicks = 0;
+			
+			//start scoreboard at 0
+			score = 0;
+			scoreboard = new TextField(50, 35, score.toString(),"Verdana", 30, 0xDB212A);
+			scoreboard.x = stage.width;
+			
+			addChild(scoreboard);
 			
 			timer = new Timer(1000 / 30, 0);
 			timer.addEventListener(TimerEvent.TIMER, update);
