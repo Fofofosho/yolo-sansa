@@ -127,6 +127,7 @@ package
 				case _END:
 				{
 					//Show game over screen, replay? continue? or boot back to main menu
+					stage.addEventListener(KeyboardEvent.KEY_DOWN, dispatch);
 					stage.removeChild(scoreboard);
 					
 					end = new End(this);
@@ -167,6 +168,7 @@ package
 					if (world.checkPlayerDeath()) {
 						trace("The player died");
 						state = _END;
+						draw();
 					}
 					
 					break;
@@ -203,6 +205,11 @@ package
 			{
 				case _INIT:
 					mainMenu.checkButton(event);
+					break;
+				
+				case _END:
+					end.checkButton(event);
+					break;
 			}
 		}
 		
@@ -211,11 +218,27 @@ package
 			if(state == _INIT)
 			{
 				state = _RUNNING;
+				//state = _END;
 				mainMenu = null;
 				
 				//Draws the new items to the screen
 				draw();
 			}
+			else if (state == _END)
+			{
+				//need to reset the game
+				state = _RUNNING;
+				world = null;
+				end = null;
+				draw();
+			}
+		}
+		
+		//This function will reset the game and start fresh with game running
+		public function reset():void
+		{
+			state = _INIT;
+			draw();
 		}
 		
 		/* *******MIGHT NOT NEED THIS

@@ -22,12 +22,11 @@ package Screens
 		private var credits:Image;
 		private var credTween:Tween;
 		
-		private var start_btn:Image;
-		private var start_btn_select:Image
-		
-		//Only need one boolean, true is top, false is bottom
 		private var topSelect:Boolean;
 		private var creditBool:Boolean;
+		
+		private var start_btn:Image;
+		private var start_btn_select:Image
 		
 		private var credits_btn:Image;
 		private var credits_btn_select:Image;

@@ -87,7 +87,7 @@ package
 				{
 					if (collision(player, plat)) 
 					{
-						//set player y velocity to a positive value
+						set player y velocity to a positive value
 					}
 				}
 			}
