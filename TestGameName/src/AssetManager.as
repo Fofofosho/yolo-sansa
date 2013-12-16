@@ -26,6 +26,9 @@ package
 		[Embed(source = "../assets/background.png")]
 		private static const background:Class;
 		
+		[Embed(source = "../assets/ground.png")]
+		private static const ground:Class;
+		
 		[Embed(source = "../assets/menu.png")]
 		private static const menu:Class;
 		

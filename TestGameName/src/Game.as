@@ -46,6 +46,7 @@ package
 		private var world:World;
 		
 		private var background:Image;
+		private var ground:Image;
 		
 		//keep track of score
 		public var score:int;
@@ -112,6 +113,16 @@ package
 				{
 					background = new Image(AssetManager.getTexture("background"));
 					addChild(background);
+					
+					ground = new Image(AssetManager.getTexture("ground"));
+					ground.x = 0;
+					ground.y = 650;
+					ground.width = 500;
+					ground.height = 80;
+					addChild(ground);
+					
+					
+					
 					
 					stage.removeEventListener(KeyboardEvent.KEY_DOWN, dispatch);
 			
