@@ -40,7 +40,7 @@ package
 			
 			player = new Player();
 			player.x = 250;
-			player.y = 600;
+			player.y = 680;
 			
 			peck_1 = new Peck(0);
 			peck_2 = new Peck(1);

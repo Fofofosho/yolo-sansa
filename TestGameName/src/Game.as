@@ -116,7 +116,7 @@ package
 					
 					ground = new Image(AssetManager.getTexture("ground"));
 					ground.x = 0;
-					ground.y = 650;
+					ground.y = 720;
 					ground.width = 500;
 					ground.height = 80;
 					addChild(ground);
