@@ -45,13 +45,20 @@ package
 			for (var i:int = 0; i < numPlats; i++)
 			{	
 				platform = new Platform();
-				//platform.setXY( 
-								//new Point(
-									//Math.floor(Math.random() * 500) + 2, 
-									//Math.floor(Math.random() * 500) + 2
-								//)
-							//);
+				checkPlatformOverlap(platform);
+				
 				platformArray.push(platform.getImage());
+			}
+		}
+		
+		public function checkPlatformOverlap(plat:Platform):void
+		{
+			for each (var p:Image in platformArray)
+			{
+				while (collision(p, plat)) 
+				{
+					plat.setRandomXY();
+				}
 			}
 		}
 		
@@ -70,7 +77,7 @@ package
 				case Keyboard.UP:
 					if(player.getYVel() == 0 && player.getYAcc() == 0)
 					{
-						player.setYVel(-40);
+						player.setYVel(-36);
 						player.setYAcc(2);
 					}
 			}

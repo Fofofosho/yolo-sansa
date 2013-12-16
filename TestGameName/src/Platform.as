@@ -22,6 +22,12 @@ package
 			jalapeno.y = Math.floor(Math.random() * 700) + 2;
 		}
 		
+		public function setRandomXY():void
+		{
+			jalapeno.x = Math.floor(Math.random() * 380) + 2;
+			jalapeno.y = Math.floor(Math.random() * 700) + 2;
+		}
+		
 		public function getImage():Image
 		{
 			return jalapeno;
