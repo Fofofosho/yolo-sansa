@@ -30,8 +30,8 @@ package
 			yAcc = 0;
 			
 			sombrero = new Image(AssetManager.getTexture("sombrero"));
-			sombrero.height = 128;
-			sombrero.width = 128;
+			sombrero.height = 80;
+			sombrero.width = 104;
 			
 			addChild(sombrero);
 			moving = _STILL;
@@ -66,8 +66,10 @@ package
 			
 			if(yAcc >= 0)
 			{
-				if(yAcc > 3)
+				if(yAcc > 3)					
+				{
 					yAcc = 3;
+				}
 					
 				
 			}

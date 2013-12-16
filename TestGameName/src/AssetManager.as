@@ -11,7 +11,7 @@ package
 		[Embed(source = "../assets/jalapeno.png")]
 		private static const jalapeno:Class;
 		
-		[Embed(source = "../assets/sombrero.png")]
+		[Embed(source = "../assets/character.png")]
 		private static const sombrero:Class;
 		
 		[Embed(source = "../assets/menu.png")]
@@ -37,6 +37,9 @@ package
 		
 		[Embed(source = "../assets/end.png")]
 		private static const end:Class;
+		
+		[Embed(source = "../assets/sounds/Jump.mp3")]
+		private static const jumpSound:Class;
 		
 		
 		private static var textures:Dictionary = new Dictionary();
