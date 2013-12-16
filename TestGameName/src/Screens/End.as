@@ -128,7 +128,7 @@ package Screens
 					break;
 				}
 				
-				//Key 'ENTER, B, C, R, T, Y, Z, X, C, Q, E, =, -'
+				//Key 'ENTER, R, T, Y, Z, X, C, Q, E, =, -'
 				case 13:
 				case 66:
 				case 67:

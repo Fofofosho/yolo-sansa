@@ -176,7 +176,7 @@ package Screens
 					break;
 				}
 				
-				//Key 'ENTER, A, B, C, R, T, Y, Z, X, C, Q, E, =, -'
+				//Key 'ENTER, R, T, Y, Z, X, C, Q, E, =, -'
 				case 13:
 				case 65:
 				case 66:
@@ -202,11 +202,11 @@ package Screens
 						credits.alpha = 0;
 						stage.addChild(credits);
 						
-						bgTween = new Tween(background, .5);
+						bgTween = new Tween(background, .2);
 						bgTween.fadeTo(0);
 						Starling.juggler.add(bgTween);
 						
-						credTween = new Tween(credits, .5);
+						credTween = new Tween(credits, .2);
 						credTween.fadeTo(1);
 						Starling.juggler.add(credTween);
 						

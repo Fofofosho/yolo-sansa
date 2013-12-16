@@ -46,7 +46,7 @@ package
 		private var world:World;
 		
 		private var background:Image;
-		private var ground:Image;
+		public var ground:Image;
 		
 		//keep track of score
 		public var score:int;
@@ -121,12 +121,9 @@ package
 					ground.height = 80;
 					addChild(ground);
 					
-					
-					
-					
-					stage.removeEventListener(KeyboardEvent.KEY_DOWN, dispatch);
+					//stage.removeEventListener(KeyboardEvent.KEY_DOWN, dispatch);
 			
-					world = new World(stage);
+					world = new World(this, stage);
 					
 					//Add scoreboard. Starts at 0
 					scoreboard = new TextField(400, 40, score.toString(), "Verdana", 30, 0xDB212A);
@@ -156,6 +153,7 @@ package
 				case _END:
 				{
 					//Show game over screen, replay? continue? or boot back to main menu
+					
 					stage.addEventListener(KeyboardEvent.KEY_DOWN, dispatch);
 					removeChild(scoreboard);
 					
@@ -242,7 +240,7 @@ package
 				case _INIT:
 					mainMenu.checkButton(event);
 					break;
-				
+					
 				case _END:
 					end.checkButton(event);
 					break;
@@ -277,6 +275,7 @@ package
 			state = _INIT;
 			score = 0;
 			removeChild(background);
+			removeChild(ground);
 			draw();
 		}
 		

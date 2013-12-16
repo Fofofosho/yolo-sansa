@@ -24,13 +24,19 @@ package
 		private var player:Player;
 		
 		private var peckCounter:int;
-	
+		private var firstJump:Boolean;
+		
 		private var jumpSound:Sound;
 		
+		private var game:Game;
+		
 		//This will handle all of the continuous world and "stepping blocks"
-		public function World(stage:Stage) 
+		public function World(game:Game, stage:Stage) 
 		{
 			this.stage = stage;
+			this.game = game;
+			
+			firstJump = true;
 			
 			player = new Player();
 			player.x = 250;
@@ -49,7 +55,6 @@ package
 			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 		}
 		
-		
 		public function onKeyPress(event:KeyboardEvent):void
 		{
 			switch(event.keyCode)
@@ -66,11 +71,12 @@ package
 					
 				case Keyboard.UP:
 				case 87:
-					if(player.getYVel() == 0 && player.getYAcc() == 0)
+					if(player.getYVel() == 0 && player.getYAcc() == 0 && firstJump)
 					{
 						//jumpSound.play();
 						player.setYVel(-30);
 						player.setYAcc(2);
+						firstJump = false;
 					}
 			}
 		}
@@ -80,10 +86,12 @@ package
 			switch(event.keyCode)
 			{
 				case Keyboard.LEFT:
+				case 65:
 					player.setMoving(Player._STILL_L);
 					break;
 					
 				case Keyboard.RIGHT:
+				case 68:	
 					player.setMoving(Player._STILL_R);
 					break;
 			}
@@ -94,6 +102,9 @@ package
 			peckCheck();
 			
 			doCollisionDetection();
+			
+			if (firstJump == false && game.ground.y < 900)
+				game.ground.y += peck_1.getYVel();
 			
 			player.update();
 			
@@ -202,7 +213,7 @@ package
 				peck_1.setYVel(-player.getYVel());
 				peck_1.setYAcc(-player.getYAcc());
 				peck_2.setYVel(-player.getYVel());
-				peck_2.setYAcc(-player.getYAcc());
+				peck_2.setYAcc( -player.getYAcc());
 				player.setYVel(0);
 				player.setYAcc(0);
 			}
