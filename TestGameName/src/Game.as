@@ -50,6 +50,7 @@ package
 		
 		//keep track of score
 		public var score:int;
+		public var highscore:int;
 		private var scoreboard:TextField;
 		
 		private var musica:Sound;
