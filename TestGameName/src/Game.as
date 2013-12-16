@@ -215,8 +215,8 @@ package
 		{
 			if(state == _INIT)
 			{
-				//state = _RUNNING;
-				state = _END;
+				state = _RUNNING;
+				//state = _END;
 				mainMenu = null;
 				
 				//Draws the new items to the screen
