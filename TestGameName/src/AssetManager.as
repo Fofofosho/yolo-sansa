@@ -44,7 +44,6 @@ package
 		[Embed(source = "../assets/sounds/Jump.mp3")]
 		private static const jumpSound:Class;
 		
-		
 		private static var textures:Dictionary = new Dictionary();
 		private static var sprites:Dictionary  = new Dictionary();
 		

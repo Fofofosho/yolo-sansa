@@ -2,6 +2,9 @@ package
 {
 	import adobe.utils.CustomActions;
 	import flash.events.TimerEvent;
+	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.net.URLRequest;
 	import flash.ui.Keyboard;
 	import flash.ui.KeyLocation;
 	import Screens.End;
@@ -48,6 +51,9 @@ package
 		public var score:int;
 		private var scoreboard:TextField;
 		
+		private var musica:Sound;
+		private var channel:SoundChannel;
+		
 		public function Game() 
 		{
 			super();
@@ -65,6 +71,10 @@ package
 			
 			//FOR DEBUG>>
 			trace("menu");
+			
+			musica = new Sound(new URLRequest("../assets/sounds/musica.mp3"));
+			channel = new SoundChannel();
+			channel = musica.play(100, 9999);
 			
 			numTicks = 0;
 			
@@ -104,10 +114,14 @@ package
 					addChild(background);
 					
 					stage.removeEventListener(KeyboardEvent.KEY_DOWN, dispatch);
+			
 					world = new World(stage);
 					
 					//Add scoreboard. Starts at 0
-					scoreboard = new TextField(50, 35, score.toString(),"Verdana", 30, 0xDB212A);
+					scoreboard = new TextField(400, 40, score.toString(), "Verdana", 30, 0xDB212A);
+					scoreboard.x = 0;
+					scoreboard.y = 0;
+					scoreboard.hAlign = "left";
 					addChild(scoreboard);
 					
 					trace("RUNNING");
@@ -167,6 +181,7 @@ package
 					
 					//Manage the array of sprite's location
 					//trace("RUNNING");
+					
 					world.update();
 					
 					if (world.checkPlayerDeath()) {
@@ -238,6 +253,7 @@ package
 			{
 				//need to reset the game
 				state = _RUNNING;
+				score = 0;
 				world = null;
 				end = null;
 				draw();
@@ -248,6 +264,7 @@ package
 		public function reset():void
 		{
 			state = _INIT;
+			score = 0;
 			removeChild(background);
 			draw();
 		}

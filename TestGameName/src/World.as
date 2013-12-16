@@ -17,8 +17,6 @@ package
 	 */
 	public class World
 	{
-		
-		
 		private var stage:Stage;
 		
 		private var peck_1:Peck;
@@ -57,17 +55,20 @@ package
 			switch(event.keyCode)
 			{
 				case Keyboard.LEFT:
+				case 65:
 					player.setMoving(Player._LEFT);
 					break;
 					
 				case Keyboard.RIGHT:
+				case 68:
 					player.setMoving(Player._RIGHT);
 					break;
 					
 				case Keyboard.UP:
+				case 87:
 					if(player.getYVel() == 0 && player.getYAcc() == 0)
 					{
-						jumpSound.play();
+						//jumpSound.play();
 						player.setYVel(-30);
 						player.setYAcc(2);
 					}
