@@ -11,6 +11,15 @@ package
 		[Embed(source = "../assets/jalapeno.png")]
 		private static const jalapeno:Class;
 		
+		[Embed(source = "../assets/jalapenodebug.png")]
+		private static const jalapenodebug:Class;
+		
+		[Embed(source = "../assets/jalapeno2.png")]
+		private static const jalapeno2:Class;
+		
+		[Embed(source = "../assets/jalapeno2debug.png")]
+		private static const jalapeno2debug:Class;
+		
 		[Embed(source = "../assets/character.png")]
 		private static const sombrero:Class;
 		

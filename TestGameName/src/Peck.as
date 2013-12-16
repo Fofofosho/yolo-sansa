@@ -7,6 +7,8 @@ package
 	 */
 	public class Peck extends Sprite 
 	{
+		private var yVel:int;
+		private var yAcc:int;
 		private var platform:Platform;
 		private var platformArray:Array;
 		
@@ -22,6 +24,7 @@ package
 		
 		private function randomizePlatforms(offset:Number):void
 		{
+			platformArray = null;
 			platformArray = new Array();
 			var randomX:int = 0;
 			var guarantor:int = 0;
@@ -39,7 +42,7 @@ package
 					guarantor = 0;
 				}
 				
-				else if(guarantor > 2 || Math.random() < (1 - offset))
+				else if(guarantor > 1 || Math.random() < (1 - offset))
 				{
 					platform = new Platform(randomX, i * 60);
 					platformArray.push(platform);
@@ -47,13 +50,13 @@ package
 					
 					if(Math.random() < (0.5 - offset))
 					{
-						//while((platform.x - 120 < randomX) && (randomX < platform.x + 120))
-						//{
-						//	randomX = Math.floor(Math.random() * 380) + 2;
-						//}
+						while((platform.x - 120 < randomX) && (randomX < platform.x + 120))
+						{
+							randomX = Math.floor(Math.random() * 380) + 2;
+						}
 						
-						//platform = new Platform(randomX, (i * 60) + 20);
-						//platformArray.push(platform);
+						platform = new Platform(randomX, (i * 60) + 20);
+						platformArray.push(platform);
 					}
 				}
 				
@@ -62,9 +65,40 @@ package
 			}
 		}
 		
+		public function update() : void
+		{				
+			yVel = yVel + yAcc;
+			this.y = this.y + yVel;
+			
+			if(yAcc < -3)					
+			{
+				yAcc = -3;
+			}
+		}
+		
 		public function getPlatformArray():Array
 		{
 			return platformArray;
+		}
+		
+		public function getYVel():int
+		{
+			return yVel;
+		}
+		
+		public function setYVel(newYVel:int):void
+		{
+			yVel = newYVel;
+		}
+		
+		public function getYAcc():int
+		{
+			return yAcc;
+		}
+		
+		public function setYAcc(newYAcc:int):void
+		{
+			yAcc = newYAcc;
 		}
 	}
 

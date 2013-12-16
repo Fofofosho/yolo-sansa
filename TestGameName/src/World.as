@@ -90,13 +90,16 @@ package
 		
 		public function update():void
 		{	
-			peck_1.y += 5;
-			peck_2.y += 5;
 			peckCheck();
 			
 			doCollisionDetection();
 			
 			player.update();
+			
+			doMotionSwitchCheck();
+			
+			peck_1.update();
+			peck_2.update();
 			
 			checkSideBoundaries();
 		}
@@ -116,7 +119,7 @@ package
 				stage.removeChild(peck_1);
 				peck_1 = null;
 				peck_1 = new Peck(peckCounter);
-				peck_1.y = -800;
+				peck_1.y = peck_2.y - 800;
 				peckCounter++;
 				stage.addChild(peck_1);
 				stage.removeChild(player);
@@ -129,7 +132,7 @@ package
 				stage.removeChild(peck_2);
 				peck_2 = null;
 				peck_2 = new Peck(peckCounter + 1);
-				peck_2.y = -800;
+				peck_2.y = peck_1.y - 800;
 				peckCounter++;
 				stage.addChild(peck_2);
 				stage.removeChild(player);
@@ -166,6 +169,40 @@ package
 		private function playerCollision(plat:Platform):Boolean
 		{
 			return player.getStandBox().intersects(plat.getBounceBox()); 
+		}
+		
+		private function doMotionSwitchCheck():void
+		{
+			if(peck_2.getYVel() < 0)
+			{
+				player.setYVel(-peck_2.getYVel());
+				player.setYAcc(-peck_2.getYAcc());
+				peck_1.setYVel(0);
+				peck_1.setYAcc(0);
+				peck_2.setYVel(0);
+				peck_2.setYAcc(0);
+			}
+			
+			if(peck_1.getYVel() < 0)
+			{
+				player.setYVel(-peck_1.getYVel());
+				player.setYAcc(-peck_1.getYAcc());
+				peck_1.setYVel(0);
+				peck_1.setYAcc(0);
+				peck_2.setYVel(0);
+				peck_2.setYAcc(0);
+			}
+			
+			else if(player.y < 320)
+			{
+				player.y = 320;
+				peck_1.setYVel(-player.getYVel());
+				peck_1.setYAcc(-player.getYAcc());
+				peck_2.setYVel(-player.getYVel());
+				peck_2.setYAcc(-player.getYAcc());
+				player.setYVel(0);
+				player.setYAcc(0);
+			}
 		}
 		
 		public function checkPlayerDeath():Boolean
