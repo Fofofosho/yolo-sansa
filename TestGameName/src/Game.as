@@ -128,10 +128,10 @@ package
 				{
 					//Show game over screen, replay? continue? or boot back to main menu
 					stage.addEventListener(KeyboardEvent.KEY_DOWN, dispatch);
-					stage.removeChild(scoreboard);
+					removeChild(scoreboard);
 					
 					end = new End(this);
-					stage.addChild(end);
+					addChild(end);
 					
 					break;
 				}

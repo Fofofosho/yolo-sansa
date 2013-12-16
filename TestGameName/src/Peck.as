@@ -34,7 +34,7 @@ package
 				platformArray.push(platform);
 				
 				
-				if(Math.random() < 0.5)
+				if(Math.random() < 0.2)
 				{
 					while((platform.x - 120 < randomX) && (randomX < platform.x + 120))
 					{

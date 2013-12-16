@@ -118,6 +118,9 @@ package
 			{
 				player.setYVel(0);
 				player.setYAcc(0);
+				stage.removeChild(peck_1);
+				stage.removeChild(peck_2);
+				stage.removeChild(player);
 				return true;
 			}
 			
