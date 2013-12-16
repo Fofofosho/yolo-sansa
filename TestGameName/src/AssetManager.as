@@ -14,6 +14,9 @@ package
 		[Embed(source = "../assets/character.png")]
 		private static const sombrero:Class;
 		
+		[Embed(source = "../assets/background.png")]
+		private static const background:Class;
+		
 		[Embed(source = "../assets/menu.png")]
 		private static const menu:Class;
 		

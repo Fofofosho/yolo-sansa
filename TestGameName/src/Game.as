@@ -42,6 +42,8 @@ package
 		
 		private var world:World;
 		
+		private var background:Image;
+		
 		//keep track of score
 		public var score:uint = 0;
 		private var scoreboard:TextField;
@@ -98,6 +100,9 @@ package
 				//Drawing gameplay aspects
 				case _RUNNING:
 				{
+					background = new Image(AssetManager.getTexture("background"));
+					addChild(background);
+					
 					stage.removeEventListener(KeyboardEvent.KEY_DOWN, dispatch);
 					world = new World(stage);
 					
@@ -238,6 +243,7 @@ package
 		public function reset():void
 		{
 			state = _INIT;
+			removeChild(background);
 			draw();
 		}
 		

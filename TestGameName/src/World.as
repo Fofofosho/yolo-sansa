@@ -136,7 +136,6 @@ package
 				return false;
 		}
 		
-		
 		public function checkSideBoundaries():void 
 		{
 			if ((player.x + (player.width / 2)) < -25)
