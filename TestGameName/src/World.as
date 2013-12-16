@@ -57,6 +57,7 @@ package
 				while (collision(p, plat)) 
 				{
 					plat.setRandomXY();
+					checkPlatformOverlap(plat);
 				}
 			}
 		}
