@@ -14,14 +14,15 @@ package
 	 */
 	public class World
 	{
-		public var platformArray:Array;
+		
 		
 		private var stage:Stage;
 		
-		private var platform:Platform;
+		private var peck_1:Peck;
+		private var peck_2:Peck;
 		private var player:Player;
 		
-		private var numPlats:Number;
+		
 		//This will handle all of the continuous world and "stepping blocks"
 		public function World(stage:Stage) 
 		{
@@ -31,36 +32,16 @@ package
 			player.x = 250;
 			player.y = 600;
 			
-			numPlats = 5;
+			peck_1 = new Peck();
+			peck_2 = new Peck();
+			
+			peck_2.y = 800;
+			
 			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
-			setupSpritesArray();
 		}
 		
-		private function setupSpritesArray():void
-		{
-			platformArray = new Array(numPlats);
-			for (var i:int = 0; i < numPlats; i++)
-			{	
-				platform = new Platform();
-				checkPlatformOverlap(platform);
-				
-				platformArray.push(platform.getImage());
-			}
-		}
-		
-		public function checkPlatformOverlap(plat:Platform):void
-		{
-			for each (var p:Image in platformArray)
-			{
-				while (collision(p, plat)) 
-				{
-					plat.setRandomXY();
-					checkPlatformOverlap(plat);
-				}
-			}
-		}
 		
 		public function onKeyPress(event:KeyboardEvent):void
 		{
@@ -117,14 +98,11 @@ package
 		}
 		
 		public function draw():void
-		{
-			for each (var image:Image in platformArray)
-			{
-				stage.addChild(image);
-			}
-			
+		{	
 			//draw player
 			stage.addChild(player);
+			stage.addChild(peck_1);
+			stage.addChild(peck_2);
 		}
 		
 		

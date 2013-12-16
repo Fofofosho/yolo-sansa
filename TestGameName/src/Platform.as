@@ -15,17 +15,17 @@ package
 	{
 		private var jalapeno:Image;
 		
-		public function Platform() 
+		public function Platform(_x:int, _y:int) 
 		{
 			jalapeno = new Image(AssetManager.getTexture("jalapeno"));
-			jalapeno.x = Math.floor(Math.random() * 380) + 2;
-			jalapeno.y = Math.floor(Math.random() * 700) + 2;
+			this.x = _x;
+			this.y = _y;
+			addChild(jalapeno);
 		}
 		
-		public function setRandomXY():void
+		public function setRandomX():void
 		{
-			jalapeno.x = Math.floor(Math.random() * 380) + 2;
-			jalapeno.y = Math.floor(Math.random() * 700) + 2;
+			this.x = Math.floor(Math.random() * 380) + 2;
 		}
 		
 		public function getImage():Image
