@@ -10,88 +10,115 @@ package
 	 */
 	public class Player extends Sprite
 	{
+		public static const _LEFT:int = -2;
+		public static const _STILL_L:int = -1;
+		public static const _STILL:int = 0;
+		public static const _STILL_R:int = 1;
+		public static const _RIGHT:int = 2;
+		
 		private var sombrero:Image;
 		
-		private var position:Point;
-		private var velocity:Point;
-		private var acceleration:Point;
+		private var yVel:int;
+		private var yAcc:int;
+		private var moving:int;
+		private var falling:Boolean;
 		
 		//This will handle the player and its interactions as well as movement
 		public function Player() 
 		{
-			position = new Point();
-			velocity = new Point();
-			acceleration = new Point();
+			yVel = 0;
+			yAcc = 0;
 			
 			sombrero = new Image(AssetManager.getTexture("sombrero"));
-			position.x = this.x;
-			position.y = this.y;
 			sombrero.height = 128;
 			sombrero.width = 128;
 			
 			addChild(sombrero);
+			moving = _STILL;
 		}
 		
 		public function update() : void
 		{	
-			this.x = position.x;
-			this.y = position.y;
-			
-			velocity = velocity.add(acceleration);
-			position = position.add(velocity);
-			
-			if(Math.abs(velocity.x) > 8)
+			switch(moving)
 			{
-				if(velocity.x < 0)
-					velocity.x = -8;
-				else
-					velocity.x = 8;
+				case _STILL:
+					break;
+				case _LEFT:
+					this.x -= 10;
+					break;
+				case _RIGHT:
+					this.x += 10;
+					break;
 			}
+			
+			yVel = yVel + yAcc;
+			this.y = this.y + yVel;
 			
 			applyPhysics();
 		}
 		
 		private function applyPhysics() : void
 		{
-			if(acceleration.x == 0)
+			if(yAcc < 0)
 			{
-				velocity.x *= .2;
+				yAcc = 0;
+			}
+			
+			if(yAcc >= 0)
+			{
+				if(yAcc > 3)
+					yAcc = 3;
+					
 				
-				if(velocity.x > -1 && velocity.x < 1)
-					velocity.x = 0;
+			}
+			
+			if(yVel > 0)
+			{
+				falling = true;
+				
+				if(yVel > 15)
+					yVel = 15;
+			}
+			
+			if(yVel <= 0)
+			{
+				falling = false;
 			}
 		}
 		
-		public function getPosition():Point
+		public function setMoving(newMov:int):void
 		{
-			return position;
+			if(moving == _LEFT && newMov == _STILL_L)
+				moving = _STILL;
+			else if(moving == _RIGHT && newMov == _STILL_R)
+				moving = _STILL;
+			else if(moving == _STILL && (newMov == _LEFT || newMov == _RIGHT))
+				moving = newMov;
 		}
 		
-		public function setPosition(newP:Point):void
+		public function isFalling():Boolean
 		{
-			position = newP;
-			this.x = position.x;
-			this.y = position.y;
+			return falling;
 		}
 		
-		public function getVelocity():Point
+		public function getYVel():int
 		{
-			return velocity;
+			return yVel;
 		}
 		
-		public function setVelocity(newV:Point):void
+		public function setYVel(newYVel:int):void
 		{
-			velocity = newV;
+			yVel = newYVel;
 		}
 		
-		public function getAcceleration():Point
+		public function getYAcc():int
 		{
-			return acceleration;
+			return yAcc;
 		}
 		
-		public function setAcceleration(newA:Point):void
+		public function setYAcc(newYAcc:int):void
 		{
-			acceleration = newA;
+			yAcc = newYAcc;
 		}
 	}
 

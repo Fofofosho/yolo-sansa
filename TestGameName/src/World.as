@@ -28,7 +28,8 @@ package
 			this.stage = stage;
 			
 			player = new Player();
-			player.setPosition(new Point(250, 600));
+			player.x = 250;
+			player.y = 600;
 			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
@@ -56,11 +57,11 @@ package
 			switch(event.keyCode)
 			{
 				case Keyboard.LEFT:
-					player.setAcceleration(new Point(-5, 0));
+					player.setMoving(Player._LEFT);
 					break;
 					
 				case Keyboard.RIGHT:
-					player.setAcceleration(new Point(5, 0));
+					player.setMoving(Player._RIGHT);
 					break;
 			}
 		}
@@ -70,11 +71,11 @@ package
 			switch(event.keyCode)
 			{
 				case Keyboard.LEFT:
-					player.setAcceleration(new Point());
+					player.setMoving(Player._STILL_L);
 					break;
 					
 				case Keyboard.RIGHT:
-					player.setAcceleration(new Point());
+					player.setMoving(Player._STILL_R);
 					break;
 			}
 		}
@@ -98,7 +99,7 @@ package
 		
 		public function checkPlayerDeath():Boolean
 		{
-			if (player.getPosition().y > stage.height) 
+			if (player.y > stage.height) 
 			{
 				return true;
 			}
@@ -109,14 +110,14 @@ package
 		
 		public function checkSideBoundaries():void 
 		{
-			if ((player.getPosition().x + (player.width / 2)) < -25)
+			if ((player.x + (player.width / 2)) < -25)
 			{
-				player.setPosition(new Point(stage.stageWidth - (player.width / 2), player.getPosition().y));
+				player.x = stage.stageWidth - (player.width / 2);
 			}
 				
-			else if ((player.getPosition().x + (player.width / 2)) > stage.stageWidth + 25) 
+			else if ((player.x + (player.width / 2)) > stage.stageWidth + 25) 
 			{
-				player.setPosition(new Point(0 - (player.width / 2), player.getPosition().y));
+				player.x = 0 - (player.width / 2);
 			}
 		}
 		
