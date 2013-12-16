@@ -228,16 +228,16 @@ package
 			{
 				player.x = stage.stageWidth - (player.width / 2);
 			}
-				
+			
 			else if ((player.x + (player.width / 2)) > stage.stageWidth + 25) 
 			{
 				player.x = 0 - (player.width / 2);
 			}
 		}
 		
-		public function getPeckCount():int
+		public function getCounter():int
 		{
-			return peckCounter;
+			return -(peck_1.getYAcc() + peck_2.getYAcc());
 		}
 		
 	}

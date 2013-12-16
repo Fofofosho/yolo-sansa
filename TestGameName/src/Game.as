@@ -192,7 +192,7 @@ package
 					else
 					{
 						//dynamically change scoreboard
-						score += 2.47 * world.getPeckCount();
+						score += 2.47 * world.getCounter();
 						scoreboard.text = score.toString();
 					}
 					
