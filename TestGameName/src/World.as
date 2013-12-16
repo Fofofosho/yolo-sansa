@@ -21,6 +21,7 @@ package
 		private var platform:Platform;
 		private var player:Player;
 		
+		private var numPlats:Number;
 		//This will handle all of the continuous world and "stepping blocks"
 		public function World(stage:Stage) 
 		{
@@ -31,6 +32,8 @@ package
 			player.x = 250;
 			player.y = 600;
 			
+			numPlats = 5;
+			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 			setupSpritesArray();
@@ -38,8 +41,8 @@ package
 		
 		private function setupSpritesArray():void
 		{
-			platformArray = new Array(5);
-			for (var i:int = 0; i < 5; i++)
+			platformArray = new Array(numPlats);
+			for (var i:int = 0; i < numPlats; i++)
 			{	
 				platform = new Platform();
 				//platform.setXY( 
@@ -82,6 +85,16 @@ package
 		
 		public function update():void
 		{
+			if (player.isFalling()) 
+			{	
+				for each (var plat:Platform in platformArray)
+				{
+					if (collision(player, plat)) 
+					{
+						//set player y velocity to a positive value
+					}
+				}
+			}
 			player.update();
 		}
 		
@@ -96,6 +109,12 @@ package
 			stage.addChild(player);
 		}
 		
+		
+		//check for collision between two objects
+		private function collision(a:Object, b:Object):Boolean 
+		{
+			return a.getBounds(a.root).intersects(b.getBounds(b.root));
+		}
 		
 		public function checkPlayerDeath():Boolean
 		{
