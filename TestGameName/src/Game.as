@@ -204,6 +204,11 @@ package
 			{
 				case _INIT:
 					mainMenu.checkButton(event);
+					break;
+				
+				case _END:
+					end.checkButton(event);
+					break;
 			}
 		}
 		
@@ -211,12 +216,28 @@ package
 		{
 			if(state == _INIT)
 			{
-				state = _RUNNING;
+				//state = _RUNNING;
+				state = _END;
 				mainMenu = null;
 				
 				//Draws the new items to the screen
 				draw();
 			}
+			else if (state == _END)
+			{
+				//need to reset the game
+				state = _RUNNING;
+				world = null;
+				end = null;
+				draw();
+			}
+		}
+		
+		//This function will reset the game and start fresh with game running
+		public function reset():void
+		{
+			state = _INIT;
+			draw();
 		}
 		
 		/* *******MIGHT NOT NEED THIS

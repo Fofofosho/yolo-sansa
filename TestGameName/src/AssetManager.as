@@ -26,6 +26,15 @@ package
 		[Embed(source = "../assets/menu_button.png")]
 		private static const selected_button:Class;
 		
+		[Embed(source = "../assets/reverse_button.png")]
+		private static const rev_selected_button:Class;
+		
+		[Embed(source = "../assets/end_button.png")]
+		private static const end_selected_button:Class;
+		
+		[Embed(source = "../assets/end_shape.png")]
+		private static const end_shape:Class;
+		
 		[Embed(source = "../assets/end.png")]
 		private static const end:Class;
 		

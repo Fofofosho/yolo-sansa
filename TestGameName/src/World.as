@@ -84,16 +84,16 @@ package
 		
 		public function update():void
 		{
-			if (player.isFalling()) 
-			{	
-				for each (var plat:Platform in platformArray)
-				{
-					if (collision(player, plat)) 
-					{
+			//if (player.isFalling()) 
+			//{	
+				//for each (var plat:Platform in platformArray)
+				//{
+					//if (collision(player, plat)) 
+					//{
 						//set player y velocity to a positive value
-					}
-				}
-			}
+					//}
+				//}
+			//}
 			player.update();
 		}
 		
