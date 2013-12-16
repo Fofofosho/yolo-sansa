@@ -147,21 +147,25 @@ package
 			{	
 				for each (var p1:Platform in peck_1.getPlatformArray())
 				{
-					if (playerCollision(p1)) 
+					if (p1.isHidden == false && playerCollision(p1)) 
 					{
 						jumpSound.play();
 						player.setYVel(-30);
 						player.setYAcc(2);
+						p1.isHidden = true;
+						p1.alpha = 0;
 					}
 				}
 				
 				for each (var p2:Platform in peck_2.getPlatformArray())
 				{
-					if (playerCollision(p2)) 
+					if (p2.isHidden == false && playerCollision(p2)) 
 					{
 						jumpSound.play();
 						player.setYVel(-30);
 						player.setYAcc(2);
+						p2.isHidden = true;
+						p2.alpha = 0;
 					}
 				}
 			}

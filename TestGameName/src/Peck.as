@@ -100,6 +100,11 @@ package
 		{
 			yAcc = newYAcc;
 		}
+		
+		//public function removePlatform():int
+		//{
+			
+		//}
 	}
 
 }

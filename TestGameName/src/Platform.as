@@ -22,6 +22,8 @@ package
 		
 		private var bounceBox:Quad;
 		
+		public var isHidden:Boolean;
+		
 		public function Platform(_x:int, _y:int) 
 		{
 			jalapeno = new Image(AssetManager.getTexture("jalapeno"));
@@ -39,6 +41,7 @@ package
 			addChild(jalapeno);
 			addChild(bounceBox);
 			
+			isHidden = false;
 			
 			/* For debugging
 			if(mode == 1)
