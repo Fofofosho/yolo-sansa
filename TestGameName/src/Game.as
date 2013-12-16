@@ -165,10 +165,9 @@ package
 					world.update();
 					
 					if (world.checkPlayerDeath()) {
+						trace("The player died");
 						state = _END;
 					}
-					
-					world.checkSideBoundaries();
 					
 					break;
 				}
