@@ -45,7 +45,8 @@ package
 			peck_1 = new Peck(0);
 			peck_2 = new Peck(1);
 			
-			peck_2.y = -860;
+			peck_1.y = -160;
+			peck_2.y = -1020;
 			
 			peckCounter = 0;
 			
@@ -143,7 +144,7 @@ package
 			{
 				stage.removeChild(peck_2);
 				peck_2 = null;
-				peck_2 = new Peck(peckCounter + 1);
+				peck_2 = new Peck(peckCounter);
 				peck_2.y = peck_1.y - 800;
 				peckCounter++;
 				stage.addChild(peck_2);
