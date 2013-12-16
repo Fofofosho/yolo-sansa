@@ -32,8 +32,7 @@ package
 				randomX = Math.floor(Math.random() * 380) + 2;
 				platform = new Platform(randomX, i * 60);
 				platformArray.push(platform);
-				
-				
+					
 				if(Math.random() < 0.2)
 				{
 					while((platform.x - 120 < randomX) && (randomX < platform.x + 120))

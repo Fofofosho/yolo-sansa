@@ -1,7 +1,9 @@
 package  
 {
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	import starling.display.Image;
+	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	
@@ -23,6 +25,8 @@ package
 		private var moving:int;
 		public var falling:Boolean;
 		
+		private var standBox:Quad;
+		
 		//This will handle the player and its interactions as well as movement
 		public function Player() 
 		{
@@ -32,6 +36,12 @@ package
 			sombrero = new Image(AssetManager.getTexture("sombrero"));
 			sombrero.height = 80;
 			sombrero.width = 104;
+			
+			standBox = new Quad(60, 20, 0xabcdef, true);
+			standBox.x = 25;
+			standBox.y = 60;
+			standBox.alpha = 0;
+			addChild(standBox);
 			
 			addChild(sombrero);
 			moving = _STILL;
@@ -86,6 +96,11 @@ package
 			{
 				falling = false;
 			}
+		}
+		
+		public function getStandBox():Rectangle
+		{
+			return standBox.getBounds(this.parent);
 		}
 		
 		public function setMoving(newMov:int):void

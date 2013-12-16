@@ -1,7 +1,9 @@
 package  
 {
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	import starling.display.Image;
+	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.textures.Texture;
 	import starling.events.Event;
@@ -14,13 +16,25 @@ package
 	public class Platform extends Sprite
 	{
 		private var jalapeno:Image;
+		private var bounceBox:Quad;
 		
 		public function Platform(_x:int, _y:int) 
 		{
 			jalapeno = new Image(AssetManager.getTexture("jalapeno"));
 			this.x = _x;
 			this.y = _y;
+			
+			bounceBox = new Quad(90, 25, 0xfedcba, true);
+			bounceBox.x = 28;
+			bounceBox.y = 22;
+			bounceBox.alpha = 0;
+			addChild(bounceBox);
 			addChild(jalapeno);
+		}
+		
+		public function getBounceBox():Rectangle
+		{
+			return bounceBox.getBounds(this.parent.parent);
 		}
 		
 		public function setRandomX():void
