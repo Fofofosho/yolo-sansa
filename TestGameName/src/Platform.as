@@ -22,7 +22,7 @@ package
 		
 		private var bounceBox:Quad;
 		
-		public var isHidden:Boolean;
+		private var hidden:Boolean;
 		
 		public function Platform(_x:int, _y:int) 
 		{
@@ -41,7 +41,7 @@ package
 			addChild(jalapeno);
 			addChild(bounceBox);
 			
-			isHidden = false;
+			hidden = false;
 			
 			/* For debugging
 			if(mode == 1)
@@ -58,6 +58,17 @@ package
 		public function getBounceBox():Rectangle
 		{
 			return bounceBox.getBounds(this.parent.parent);
+		}
+		
+		public function setHidden():void 
+		{
+			hidden = true;
+			jalapeno.alpha = 0;
+		}
+		
+		public function isHidden():Boolean
+		{
+			return hidden;
 		}
 		
 		public function setRandomX():void
