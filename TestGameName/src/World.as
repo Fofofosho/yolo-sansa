@@ -157,11 +157,14 @@ package
 		{
 			if (player.falling) 
 			{	
+				var bounceBoxPosition : int;
 				for each (var p1:Platform in peck_1.getPlatformArray())
 				{
+					bounceBoxPosition = p1.getBounceBox().y;
 					if (p1.isHidden() == false && playerCollision(p1)) 
 					{
 						jumpSound.play();
+						player.y = bounceBoxPosition - 80
 						player.setYVel(-30);
 						player.setYAcc(2);
 						p1.setHidden();
@@ -170,9 +173,11 @@ package
 				
 				for each (var p2:Platform in peck_2.getPlatformArray())
 				{
+					bounceBoxPosition = p2.getBounceBox().y;
 					if (p2.isHidden() == false && playerCollision(p2)) 
 					{
 						jumpSound.play();
+						player.y = bounceBoxPosition - 80
 						player.setYVel(-30);
 						player.setYAcc(2);
 						p2.setHidden();
