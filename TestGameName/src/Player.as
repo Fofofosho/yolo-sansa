@@ -21,7 +21,7 @@ package
 		private var yVel:int;
 		private var yAcc:int;
 		private var moving:int;
-		private var falling:Boolean;
+		public var falling:Boolean;
 		
 		//This will handle the player and its interactions as well as movement
 		public function Player() 

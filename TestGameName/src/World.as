@@ -58,7 +58,7 @@ package
 				case Keyboard.UP:
 					if(player.getYVel() == 0 && player.getYAcc() == 0)
 					{
-						player.setYVel(-36);
+						player.setYVel(-30);
 						player.setYAcc(2);
 					}
 			}
@@ -80,23 +80,23 @@ package
 		
 		public function update():void
 		{
-			
-			if (player.isFalling()) 
+			if (player.falling) 
 			{	
 				for each (var p1:Platform in peck_1.getPlatformArray())
 				{
-					if (collision(player, p1)) 
+					trace('checking plats');
+					if (playerCollision(player, p1)) 
 					{
-						player.setYVel(-36);
+						player.setYVel(-30);
 						player.setYAcc(2);
 					}
 				}
 				
 				for each (var p2:Platform in peck_2.getPlatformArray())
 				{
-					if (collision(player, p2)) 
+					if (playerCollision(player, p2)) 
 					{
-						player.setYVel(-36);
+						player.setYVel(-30);
 						player.setYAcc(2);
 					}
 				}
@@ -117,9 +117,28 @@ package
 		
 		
 		//check for collision between two objects
-		private function collision(a:Object, b:Object):Boolean 
+		/*private function collision(a:Object, b:Object):Boolean 
 		{
 			return a.getBounds(a.root).intersects(b.getBounds(b.root));
+		}
+		*/
+		private function playerCollision(plr:Player, plat:Platform):Boolean
+		{
+			var p1:Point = new Point(plr.x, plr.y + plr.height);
+			var p2:Point = new Point(plr.x + plr.width, plr.y + plr.height);
+			
+			if ((plat.x + 20 < p1.x) && (p1.x < (plat.x + plat.width)) && (plat.y + 20 < p1.y) && (p1.y < (plat.y + plat.height)))
+			{
+				trace('p1 collision');
+				return true;
+			}
+			else if ((plat.x + 20 < p2.x) && (p2.x < (plat.x + plat.width)) && (plat.y + 20 < p2.y) && (p2.y < (plat.y + plat.height)))
+			{
+				trace('p2 collision');
+				return true;
+			}
+			
+			else return false;
 		}
 		
 		public function checkPlayerDeath():Boolean
