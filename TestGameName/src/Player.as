@@ -76,8 +76,8 @@ package
 			{
 				falling = true;
 				
-				if(yVel > 15)
-					yVel = 15;
+				if(yVel > 20)
+					yVel = 20;
 			}
 			
 			if(yVel <= 0)

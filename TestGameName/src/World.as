@@ -66,6 +66,13 @@ package
 				case Keyboard.RIGHT:
 					player.setMoving(Player._RIGHT);
 					break;
+					
+				case Keyboard.UP:
+					if(player.getYVel() == 0 && player.getYAcc() == 0)
+					{
+						player.setYVel(-40);
+						player.setYAcc(2);
+					}
 			}
 		}
 		
@@ -85,6 +92,13 @@ package
 		
 		public function update():void
 		{
+			if(player.y + player.getYVel() > 600)
+			{
+				player.y = 600;
+				player.setYVel(0);
+				player.setYAcc(0);
+			}
+			/*
 			if (player.isFalling()) 
 			{	
 				for each (var plat:Platform in platformArray)
@@ -95,6 +109,7 @@ package
 					}
 				}
 			}
+			*/
 			player.update();
 		}
 		
