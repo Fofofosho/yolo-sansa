@@ -43,7 +43,7 @@ package
 			
 			peck_2.y = -860;
 			
-			peckCounter = 20;
+			peckCounter = 0;
 			
 			jumpSound = new Sound(new URLRequest("../assets/sounds/jump.mp3"));
 			
@@ -128,7 +128,7 @@ package
 			{
 				stage.removeChild(peck_2);
 				peck_2 = null;
-				peck_2 = new Peck(peckCounter);
+				peck_2 = new Peck(peckCounter + 1);
 				peck_2.y = -800;
 				peckCounter++;
 				stage.addChild(peck_2);
