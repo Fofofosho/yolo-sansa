@@ -12,9 +12,9 @@ package
 		private var platformArray:Array;
 		
 		
-		public function Peck() 
+		public function Peck(score:int) 
 		{
-			randomizePlatforms(16);
+			randomizePlatforms(score);
 			
 			for(var i:int = 0; i < platformArray.length; i++)
 			{
@@ -22,27 +22,45 @@ package
 			}
 		}
 		
-		private function randomizePlatforms(score:int):void
+		private function randomizePlatforms(score:Number):void
 		{
 			platformArray = new Array();
 			var randomX:int = 0;
+			var guarantor:int = 0;
 			
-			for (var i:int = 0; i < 16; i++)
+			score = (score + 1) / 20;
+			
+			for (var i:int = 0; (i + 1) * 60 < 800; i++)
 			{	
 				randomX = Math.floor(Math.random() * 380) + 2;
-				platform = new Platform(randomX, i * 60);
-				platformArray.push(platform);
-					
-				if(Math.random() < 0.2)
+				
+				if(i == 0 || i == 12)
 				{
-					while((platform.x - 120 < randomX) && (randomX < platform.x + 120))
-					{
-						randomX = Math.floor(Math.random() * 380) + 2;
-					}
-					
-					platform = new Platform(randomX, (i * 60) + 20);
+					platform = new Platform(randomX, i * 60);
 					platformArray.push(platform);
+					guarantor = 0;
 				}
+				
+				else if(guarantor > 2 || Math.random() < (1 - score))
+				{
+					platform = new Platform(randomX, i * 60);
+					platformArray.push(platform);
+					guarantor = 0;
+					
+					if(Math.random() < (0.5 - score))
+					{
+						while((platform.x - 120 < randomX) && (randomX < platform.x + 120))
+						{
+							randomX = Math.floor(Math.random() * 380) + 2;
+						}
+						
+						platform = new Platform(randomX, (i * 60) + 20);
+						platformArray.push(platform);
+					}
+				}
+				
+				else
+					guarantor ++;
 			}
 		}
 		
