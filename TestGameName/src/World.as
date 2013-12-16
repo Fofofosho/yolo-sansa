@@ -100,9 +100,9 @@ package
 		public function draw():void
 		{	
 			//draw player
-			stage.addChild(player);
 			stage.addChild(peck_1);
 			stage.addChild(peck_2);
+			stage.addChild(player);
 		}
 		
 		
