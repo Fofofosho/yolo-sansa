@@ -45,7 +45,7 @@ package
 		private var background:Image;
 		
 		//keep track of score
-		public var score:uint = 0;
+		public var score:int;
 		private var scoreboard:TextField;
 		
 		public function Game() 
@@ -108,7 +108,6 @@ package
 					
 					//Add scoreboard. Starts at 0
 					scoreboard = new TextField(50, 35, score.toString(),"Verdana", 30, 0xDB212A);
-					scoreboard.x = stage.width;
 					addChild(scoreboard);
 					
 					trace("RUNNING");
@@ -174,6 +173,12 @@ package
 						trace("The player died");
 						state = _END;
 						draw();
+					}
+					else
+					{
+						//dynamically change scoreboard
+						score += 2.47 * world.getPeckCount();
+						scoreboard.text = score.toString();
 					}
 					
 					break;

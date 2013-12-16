@@ -197,6 +197,11 @@ package
 			}
 		}
 		
+		public function getPeckCount():int
+		{
+			return peckCounter;
+		}
+		
 	}
 
 }

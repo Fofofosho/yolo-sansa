@@ -3,14 +3,12 @@ package
 	import starling.display.Sprite;
 	
 	/**
-	 * ...
 	 * @author C. Nakai McCarty
 	 */
 	public class Peck extends Sprite 
 	{
 		private var platform:Platform;
 		private var platformArray:Array;
-		
 		
 		public function Peck(offset:int) 
 		{
@@ -49,13 +47,13 @@ package
 					
 					if(Math.random() < (0.5 - offset))
 					{
-						while((platform.x - 120 < randomX) && (randomX < platform.x + 120))
-						{
-							randomX = Math.floor(Math.random() * 380) + 2;
-						}
+						//while((platform.x - 120 < randomX) && (randomX < platform.x + 120))
+						//{
+						//	randomX = Math.floor(Math.random() * 380) + 2;
+						//}
 						
-						platform = new Platform(randomX, (i * 60) + 20);
-						platformArray.push(platform);
+						//platform = new Platform(randomX, (i * 60) + 20);
+						//platformArray.push(platform);
 					}
 				}
 				
