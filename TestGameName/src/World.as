@@ -1,6 +1,7 @@
 package  
 {
 	import flash.geom.Point;
+	import flash.net.URLRequest;
 	import flash.ui.Keyboard;
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -8,6 +9,8 @@ package
 	import starling.events.Event;
 	import starling.events.KeyboardEvent;
 	import starling.textures.Texture;
+	import flash.media.Sound;
+
 	
 	/**
 	 * @author Forrest Townsend
@@ -23,8 +26,8 @@ package
 		private var player:Player;
 		
 		private var peckCounter:int;
-		
-		
+	
+		private var jumpSound:Sound;
 		
 		//This will handle all of the continuous world and "stepping blocks"
 		public function World(stage:Stage) 
@@ -41,6 +44,8 @@ package
 			peck_2.y = -860;
 			
 			peckCounter = 20;
+			
+			jumpSound = new Sound(new URLRequest("../assets/sounds/jump.mp3"));
 			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
@@ -62,6 +67,7 @@ package
 				case Keyboard.UP:
 					if(player.getYVel() == 0 && player.getYAcc() == 0)
 					{
+						jumpSound.play();
 						player.setYVel(-30);
 						player.setYAcc(2);
 					}
@@ -139,6 +145,7 @@ package
 				{
 					if (playerCollision(p1)) 
 					{
+						jumpSound.play();
 						player.setYVel(-30);
 						player.setYAcc(2);
 					}
@@ -148,6 +155,7 @@ package
 				{
 					if (playerCollision(p2)) 
 					{
+						jumpSound.play();
 						player.setYVel(-30);
 						player.setYAcc(2);
 					}
@@ -157,7 +165,7 @@ package
 		
 		private function playerCollision(plat:Platform):Boolean
 		{
-			return player.getStandBox().intersects(plat.getBounceBox());
+			return player.getStandBox().intersects(plat.getBounceBox()); 
 		}
 		
 		public function checkPlayerDeath():Boolean
@@ -175,7 +183,6 @@ package
 			else
 				return false;
 		}
-		
 		
 		public function checkSideBoundaries():void 
 		{
