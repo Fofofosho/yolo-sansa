@@ -25,7 +25,6 @@ package
 		//This will handle all of the continuous world and "stepping blocks"
 		public function World(stage:Stage) 
 		{
-			trace("this happened");
 			this.stage = stage;
 			
 			player = new Player();
@@ -99,12 +98,6 @@ package
 		
 		public function update():void
 		{
-			if(player.y + player.getYVel() > 600)
-			{
-				player.y = 600;
-				player.setYVel(0);
-				player.setYAcc(0);
-			}
 			/*
 			if (player.isFalling()) 
 			{	
@@ -118,6 +111,8 @@ package
 			}
 			*/
 			player.update();
+			
+			checkSideBoundaries();
 		}
 		
 		public function draw():void
@@ -139,13 +134,16 @@ package
 		}
 		
 		public function checkPlayerDeath():Boolean
-		{
-			if (player.y > stage.height) 
+		{			
+			if (player.y > 800) 
 			{
+				player.setYVel(0);
+				player.setYAcc(0);
 				return true;
 			}
 			
-			else return false;
+			else
+				return false;
 		}
 		
 		
