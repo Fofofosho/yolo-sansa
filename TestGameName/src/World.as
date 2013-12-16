@@ -80,18 +80,28 @@ package
 		
 		public function update():void
 		{
-			/*
+			
 			if (player.isFalling()) 
 			{	
-				for each (var plat:Platform in platformArray)
+				for each (var p1:Platform in peck_1.getPlatformArray())
 				{
-					if (collision(player, plat)) 
+					if (collision(player, p1)) 
 					{
-						set player y velocity to a positive value
+						player.setYVel(-36);
+						player.setYAcc(2);
+					}
+				}
+				
+				for each (var p2:Platform in peck_2.getPlatformArray())
+				{
+					if (collision(player, p2)) 
+					{
+						player.setYVel(-36);
+						player.setYAcc(2);
 					}
 				}
 			}
-			*/
+			
 			player.update();
 			
 			checkSideBoundaries();

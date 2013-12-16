@@ -46,6 +46,11 @@ package
 				}
 			}
 		}
+		
+		public function getPlatformArray():Array
+		{
+			return platformArray;
+		}
 	}
 
 }
