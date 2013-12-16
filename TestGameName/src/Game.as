@@ -127,6 +127,7 @@ package
 				case _END:
 				{
 					//Show game over screen, replay? continue? or boot back to main menu
+					stage.addEventListener(KeyboardEvent.KEY_DOWN, dispatch);
 					stage.removeChild(scoreboard);
 					
 					end = new End(this);
@@ -167,6 +168,7 @@ package
 					if (world.checkPlayerDeath()) {
 						trace("The player died");
 						state = _END;
+						draw();
 					}
 					
 					break;
