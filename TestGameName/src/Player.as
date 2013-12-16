@@ -69,11 +69,6 @@ package
 		
 		private function applyPhysics() : void
 		{
-			if(yAcc < 0)
-			{
-				yAcc = 0;
-			}
-			
 			if(yAcc >= 0)
 			{
 				if(yAcc > 3)					
