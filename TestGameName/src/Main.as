@@ -1,6 +1,9 @@
 package 
 {
 	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageDisplayState;
+	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	import starling.core.Starling;
 	
@@ -26,6 +29,10 @@ package
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+			
+			stage.scaleMode = StageScaleMode.SHOW_ALL;
+			stage.displayState = StageDisplayState.FULL_SCREEN;
+			
 			
 			_starling = new Starling(Game, this.stage);
 			_starling.start();
