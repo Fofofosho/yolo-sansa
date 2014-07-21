@@ -29,10 +29,16 @@ package
 		[Embed(source = "../assets/ground.png")]
 		private static const ground:Class;
 		
+		[Embed(source = "../assets/volumeOn.png")]
+		private static const volumeOn:Class;
+		
+		[Embed(source = "../assets/volumeOff.png")]
+		private static const volumeOff:Class;
+		
 		[Embed(source = "../assets/menu.png")]
 		private static const menu:Class;
 		
-		[Embed(source = "../assets/credits.png")]
+		[Embed(source = "../assets/credits_fixed.png")]
 		private static const credits:Class;
 		
 		[Embed(source = "../assets/menu_button0.png")]
