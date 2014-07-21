@@ -47,6 +47,8 @@ package
 		
 		private var background:Image;
 		public var ground:Image;
+		public var volumeOn:Image;
+		public var volumeOff:Image;
 		
 		//keep track of score
 		public var score:int;
@@ -55,6 +57,8 @@ package
 		
 		private var musica:Sound;
 		private var channel:SoundChannel;
+		private var pauseTime:Number;
+		public var isSoundOn:Boolean;
 		
 		public function Game() 
 		{
@@ -77,6 +81,7 @@ package
 			musica = new Sound(new URLRequest("../assets/sounds/musica.mp3"));
 			channel = new SoundChannel();
 			channel = musica.play(100, 9999);
+			isSoundOn = true;
 			
 			numTicks = 0;
 			
@@ -122,6 +127,33 @@ package
 					ground.height = 80;
 					addChild(ground);
 					
+					//TODO: add mute button
+					volumeOn = new Image(AssetManager.getTexture("volumeOn"));
+					volumeOn.x = stage.width - 65;
+					volumeOn.y = 10;
+					volumeOn.width = 25;
+					volumeOn.height = 25;
+					
+					if(isSoundOn)
+						volumeOn.alpha = 1;
+					else
+						volumeOn.alpha = 0;
+						
+					addChild(volumeOn);
+					
+					volumeOff = new Image(AssetManager.getTexture("volumeOff"));
+					volumeOff.x = stage.width - 65;
+					volumeOff.y = 10;
+					volumeOff.width = 25;
+					volumeOff.height = 25;
+					
+					if(isSoundOn)
+						volumeOff.alpha = 0;
+					else
+						volumeOff.alpha = 1;
+						
+					addChild(volumeOff);
+					
 					//stage.removeEventListener(KeyboardEvent.KEY_DOWN, dispatch);
 			
 					world = new World(this, stage);
@@ -132,7 +164,7 @@ package
 					scoreboard.y = 0;
 					scoreboard.hAlign = "left";
 					addChild(scoreboard);
-					
+					Keyboard.T
 					trace("RUNNING");
 					
 					//do the collision detection and updating of 
@@ -246,6 +278,12 @@ package
 					end.checkButton(event);
 					break;
 			}
+			
+			if (event.keyCode == Keyboard.T)
+			{
+				trace("T key pushed");
+				toggleSound();
+			}
 		}
 		
 		public function runGame():void
@@ -278,6 +316,34 @@ package
 			removeChild(background);
 			removeChild(ground);
 			draw();
+		}
+
+		public function toggleSound():void
+		{
+			//If sound is on, PAUSE
+			if (isSoundOn) 
+			{
+				trace("DEBUG, paused sound");
+				pauseTime = channel.position;
+				channel.stop();
+				isSoundOn = false;
+				if(state != _INIT)
+				{
+					volumeOn.alpha = 0;
+					volumeOff.alpha = 1;
+				}
+			}
+			else //RESUME
+			{
+				trace("DEBUG, resume sound");
+				channel = musica.play(pauseTime);
+				isSoundOn = true;
+				if(state != _INIT)
+				{
+					volumeOn.alpha = 1;
+					volumeOff.alpha = 0;
+				}
+			}
 		}
 		
 		/* *******MIGHT NOT NEED THIS

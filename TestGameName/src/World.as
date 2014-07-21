@@ -79,6 +79,7 @@ package
 						player.setYAcc(2);
 						firstJump = false;
 					}
+					break;
 			}
 		}
 		
@@ -163,7 +164,8 @@ package
 					bounceBoxPosition = p1.getBounceBox().y;
 					if (p1.isHidden() == false && playerCollision(p1)) 
 					{
-						jumpSound.play();
+						if (game.isSoundOn)
+							jumpSound.play();
 						player.y = bounceBoxPosition - 80
 						player.setYVel(-30);
 						player.setYAcc(2);
@@ -176,7 +178,8 @@ package
 					bounceBoxPosition = p2.getBounceBox().y;
 					if (p2.isHidden() == false && playerCollision(p2)) 
 					{
-						jumpSound.play();
+						if (game.isSoundOn)
+							jumpSound.play();
 						player.y = bounceBoxPosition - 80
 						player.setYVel(-30);
 						player.setYAcc(2);
@@ -258,7 +261,7 @@ package
 		{
 			return -(peck_1.getYAcc() + peck_2.getYAcc());
 		}
-		
+
 	}
 
 }

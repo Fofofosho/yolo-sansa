@@ -110,7 +110,10 @@ package Screens
 		public function checkButton(event:KeyboardEvent):void
 		{
 			trace("button push");
-			if (creditBool)
+			
+			//Credits will not exit if the 'T' button is pushed
+			// because its volume control
+			if (creditBool && event.keyCode != 84)
 			{
 				credTween.fadeTo(0);
 				Starling.juggler.add(credTween);
@@ -182,7 +185,6 @@ package Screens
 				case 66:
 				case 67:
 				case 82:
-				case 84:
 				case 89:
 				case 90:
 				case 88:
